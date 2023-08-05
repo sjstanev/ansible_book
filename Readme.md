@@ -8,6 +8,7 @@
 - [Basic Usage](#basic-usage)
 - [Inventory](#inventory)
 
+---
 ## Install
 
 Change python command to start python3
@@ -83,7 +84,7 @@ Generating TLS Certificate
      -subj /CN=target1 \
      -keyout files/nginx.key -out files/nginx.crt
    ```
-
+---
 ## Basic Usage
 
 - [Playbook](#Playbook)
@@ -114,7 +115,7 @@ and then copies this script to the host and runs it.
 
 * **Variables**
 
-Variables can be used in tasks, as well as in template files. You reference variables by using {{ variable }}
+Variables can be used in tasks, as well as in template files. You reference variables by using *{{ variable }}`
 
 * **Loop**
 
@@ -174,6 +175,7 @@ Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find pot
          $ ansible-inventory --host testserver -i inventory/vagrant.ini
          $ vagrant validate
    ```
+---
 ## Inventory
 
 The Ansible inventory is a very flexible object: it can be a file (in several formats), a directory, or an executable, and some executables are bundled as plug-ins.
