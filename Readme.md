@@ -230,7 +230,7 @@ If we choose YAML dictionaries, we access the variables with dot notation like t
 
 Contrast that to how we would otherwise access them:
 
-````
+```
 "{{ db_primary_host }}"
 ```
 
