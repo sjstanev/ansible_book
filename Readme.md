@@ -21,10 +21,12 @@
 ### If you create ansible.cfg file for example:
 
    `[defaults]`
+
    `inventory = inventory/inventory.ini`
+
    `stdout_callback = yaml`
+
    `callback_enable = timer`
-   
 
    ansible nginx -m ping
 
