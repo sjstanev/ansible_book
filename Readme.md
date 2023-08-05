@@ -5,7 +5,7 @@
 ## Table of Contents
 
 - [Install](#install)
-- [Usage](#usage)
+- [Basic Usage](#basic usage)
 - [Inventory](#inventory)
 
 ## Install
@@ -84,7 +84,7 @@ Generating TLS Certificate
      -keyout files/nginx.key -out files/nginx.crt
    ```
 
-## Usage
+## Basic Usage
 
 - [Playbook](#Playbook)
 - [Play](#Play)
