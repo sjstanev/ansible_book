@@ -1,0 +1,5 @@
+---
+db_primary_host: target1.example.com
+db_primary_port: 5432
+db_replica_host: target2.example.com
+...

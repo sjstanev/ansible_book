@@ -179,8 +179,11 @@ Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find pot
 ---
 ## Inventory
 
-- [Groups of Groups](#groups-of-groups)
 - [Behavioral Inventory Parameters](#behavioral-inventory-parameters)
+- [Groups of Groups](#groups-of-groups)
+- [Host and Group Variables](#host-and-group-variables)
+- [The Interface for a Dynamic Inventory Script](#the-interface-for-a-dynamic-inventory-script)
+- [Add_Host and Group at Runtime](#add_host-and-group_by)
 
 The Ansible inventory is a very flexible object: it can be a file (in several formats), a directory, or an executable, and some executables are bundled as plug-ins.
    ```
@@ -203,7 +206,7 @@ The Ansible inventory is a very flexible object: it can be a file (in several fo
 | ansible_python_interpreter | /usr/bin/python | Python interpreter on host |
 | ansible_ssh_private_key_file | (None) | SSH private key to use for SSH authentication |
 
-# Changing Behavioral Parameter Defaults
+Changing Behavioral Parameter Defaults
 You can override some of the behavioral parameter default values in the inventory file, or you can override them in the defaults section of the ansible.cfg file
 
 # Groups of Groups
@@ -214,3 +217,42 @@ Ansible also allows you to define groups that are made up of other groups.
 web
 task
 ```
+# Host and Group Variables
+
+You can create a separate variable file for each host and each group. Ansible expects these variable files to be in YAML format.
+It looks for host variable files in a directory called `host_vars` and group variable files in a directory called `group_vars`.
+If we choose YAML dictionaries, we access the variables with dot notation like this:
+
+```
+"{{ db.primary.host }}"
+"{{ db['primary']['host'] }}"
+```
+
+Contrast that to how we would otherwise access them:
+
+````
+"{{ db_primary_host }}"
+```
+
+# The Interface for a Dynamic Inventory Script
+
+```
+$ ansible-inventory -i inventory/hosts --host=target1
+```
+*Ansible includes a script that functions as a dynamic inventory script for the static inventory provided with the -i command-line argument: `ansible-inventory`.*
+
+# Breaking the Inventory into Multiple Files
+
+If you want to have both a regular inventory file and a dynamic inventory script, 
+just put them all in the same directory and configure Ansible to use that directory as the inventory. 
+You can do this via the inventory parameter in ansible.cfg or by using the -i flag on the command line. 
+Ansible will process all of the files and merge the results into a single inventory.
+
+<a name="add_host-and-group_by"></a>
+# Adding Entries at Runtime with add_host and group_by
+
+Ansible will let you add hosts and groups to the inventory during the execution of a playbook.
+The `add_host` module adds a host to the inventory,
+This is useful if you’re using Ansible to provision new virtual machine instances inside an IaaS cloud.
+If a new host comes online while a playbook is executing, the dynamic inventory script will not pick up this new host.
+This is because the dynamic inventory script is executed at the beginning of the playbook

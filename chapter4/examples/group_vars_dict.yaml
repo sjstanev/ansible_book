@@ -1,0 +1,9 @@
+---
+db:
+  user: widgetuser
+  password: 'cisco123'
+  name: widget_production
+  primary:
+    host: target1.example.com
+    port: 5432
+...
