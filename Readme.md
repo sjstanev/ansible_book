@@ -187,6 +187,7 @@ The Ansible inventory is a very flexible object: it can be a file (in several fo
 * **Behavioral Inventory Parameters**
 
 | Name | Default | Description |
+| -----| ------- | ----------- |
 | ansible_host | Name of host | Hostname or IP address to SSH to |
 | ansible_port | 22 | Port to SSH to |
 | ansible_user | $USER | User to SSH as |
