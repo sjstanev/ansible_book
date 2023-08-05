@@ -179,6 +179,9 @@ Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find pot
 ---
 ## Inventory
 
+- [Groups of Groups](#groups-of-groups)
+- [Behavioral Inventory Parameters](#behavioral-inventory-parameters)
+
 The Ansible inventory is a very flexible object: it can be a file (in several formats), a directory, or an executable, and some executables are bundled as plug-ins.
    ```
    [defaults]
@@ -187,7 +190,7 @@ The Ansible inventory is a very flexible object: it can be a file (in several fo
    [inventory]
    enable_plugins = host_list, script, auto, yaml, ini, toml
    ```
-* **Behavioral Inventory Parameters**
+# Behavioral Inventory Parameters
 
 | Name | Default | Description |
 | -----| ------- | ----------- |
@@ -199,3 +202,15 @@ The Ansible inventory is a very flexible object: it can be a file (in several fo
 | ansible_shell_type | sh | Shell to use for commands |
 | ansible_python_interpreter | /usr/bin/python | Python interpreter on host |
 | ansible_ssh_private_key_file | (None) | SSH private key to use for SSH authentication |
+
+# Changing Behavioral Parameter Defaults
+You can override some of the behavioral parameter default values in the inventory file, or you can override them in the defaults section of the ansible.cfg file
+
+# Groups of Groups
+Ansible also allows you to define groups that are made up of other groups.
+
+```
+[flask:children]
+web
+task
+```

@@ -1,3 +1,15 @@
 target1 ansible_host=192.168.80.251 ansible_port=2201 ansible_user=root
 target2 ansible_host=192.168.80.251 ansible_port=2202 ansible_user=root
 target3 ansible_host=192.168.80.251 ansible_port=2203 ansible_user=root
+
+[web]
+target1
+
+[task]
+target2
+
+[rabbitmq]
+target3
+
+[db]
+target3
