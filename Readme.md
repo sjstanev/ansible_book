@@ -151,23 +151,24 @@ They run only once, even if they are notified multiple times.
 
 * **Testing**
    ```
-   - name: "Make test! https://localhost:8443/index.html"
-      delegate_to: localhost
-      become: false
-      uri:
-      url: 'https://localhost:8443/index.html'
-      validate_certs: false
-      return_content: true
-      register: this
-      failed_when: "'Running on ' not in this.content"
+      - name: "Make test! https://localhost:8443/index.html"
+         delegate_to: localhost
+         become: false
+         uri:
+         url: 'https://localhost:8443/index.html'
+         validate_certs: false
+         return_content: true
+         register: this
+         failed_when: "'Running on ' not in this.content"
    ```
 
 * **Validation**
+
 Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find potential problems in playbooks.
    ```
-      $ ansible-playbook --syntax-check webservers-tls.yml
-      $ ansible-lint webservers-tls.yml
-      $ yamllint webservers-tls.yml
-      $ ansible-inventory --host testserver -i inventory/vagrant.ini
-      $ vagrant validate
+         $ ansible-playbook --syntax-check webservers-tls.yml
+         $ ansible-lint webservers-tls.yml
+         $ yamllint webservers-tls.yml
+         $ ansible-inventory --host testserver -i inventory/vagrant.ini
+         $ vagrant validate
    ```
