@@ -115,7 +115,7 @@ and then copies this script to the host and runs it.
 
 * **Variables**
 
-Variables can be used in tasks, as well as in template files. You reference variables by using *{{ variable }}`
+Variables can be used in tasks, as well as in template files. You reference variables by using *{{ variable }}*
 
 * **Loop**
 
