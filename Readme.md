@@ -5,7 +5,7 @@
 ## Table of Contents
 
 - [Install](#install)
-- [Basic Usage](#basic usage)
+- [Basic Usage](#basicusage)
 - [Inventory](#inventory)
 
 ## Install
