@@ -150,6 +150,7 @@ If a play contains multiple handlers, the handlers always run in the order that 
 They run only once, even if they are notified multiple times.
 
 * **Testing**
+
    ```
       - name: "Make test! https://localhost:8443/index.html"
          delegate_to: localhost
