@@ -4,8 +4,10 @@ FROM debian
 # Update the system
 RUN apt-get update
 
-# Install OpenSSH Server
-RUN apt-get install -y openssh-server
+# Install OpenSSH Server and python interpreter
+RUN apt-get install -y openssh-server 
+RUN apt-get upgrade -y
+RUN apt-get install -y python3
  
 # Set up configuration for SSH
 RUN mkdir /var/run/sshd
@@ -20,8 +22,8 @@ RUN echo "export VISIBLE=now" >> /etc/profile
  
 # Expose the SSH port
 EXPOSE 22
-EXPOSE 443
 EXPOSE 80
+EXPOSE 443
  
 # Run SSH
 CMD ["/usr/sbin/sshd", "-D"]

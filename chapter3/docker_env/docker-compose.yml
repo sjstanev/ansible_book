@@ -1,0 +1,18 @@
+services:
+  target1:
+    build: 
+      context: ./
+    restart: always
+    ports:
+      - 2201:22/tcp
+      - 8081:80/tcp
+      - 8443:443/tcp
+
+  target2:
+    build: 
+      context: ./
+    restart: always
+    ports:
+      - 2202:22/tcp
+      - 8082:80/tcp
+      - 8444:443/tcp
