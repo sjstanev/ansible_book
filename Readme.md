@@ -28,12 +28,11 @@ Activate venv
    source .venv/bin/activate
    ```
 Enter 'deactivate' to leave virtula environment
-
 Upgrade your pip by running:
    ```sh
    python -m pip install --upgrade pip
    ```
-Can test module ping
+You can test module ping by entring:
    ```sh
    ansible nginx -i inventory/inventory.ini -m ping
    ```
@@ -65,7 +64,8 @@ You can install Midnight Commander on Ubuntu by using the following command:
    ```sh
    ansible nginx -b -K -m package -a name=mc
    ```
-### Use Dockerfile and docker-compose.yml file to create virtual environment
+Use Dockerfile and docker-compose.yml file to create virtual environment
+   ```sh
    docker-compose up -d
    ```
 you can use yamllint to find typos in YAML that you won’t find when you use the string format.
