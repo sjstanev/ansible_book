@@ -89,3 +89,5 @@ Think of a play as the thing that connects to a group of hosts and a list of thi
 Modules are scripts that come packaged with Ansible and perform some kind of action on a host. 
 Ansible executes a task on a host by generating a custom script based on the module name and arguments, 
 and then copies this script to the host and runs it.
+
+![Playbook](https://github.com/sjstanev/ansible_book/blob/febe60b9572588f6c722c942775efe9044fe6dfd/images/playbook.png?raw=true)
