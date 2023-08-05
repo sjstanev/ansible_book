@@ -88,8 +88,8 @@ Generating TLS Certificate
 ## Basic Usage
 
 - [Playbook](#Playbook)
-- [Play](#Play)
-- [Modules](#Module)
+- [Plays](#Plays)
+- [Modules](#Modules)
 - [Variables](#Variables)
 - [Loops](#Loops)
 - [Handlers](#Handlers)
@@ -117,7 +117,8 @@ and then copies this script to the host and runs it.
 
 Variables can be used in tasks, as well as in template files. You reference variables by using *{{ variable }}*
 
-* **#Loop**
+<a name="loops"></a>
+* **Loops**
 
 When you want to run a task with each item from a list, you can use loop. A loop executes the task multiple times, each time replacing `item` with different values from the specified list:
    ```
