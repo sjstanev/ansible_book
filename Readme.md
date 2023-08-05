@@ -6,6 +6,11 @@
 
 - [Install](#install)
 - [Usage](#usage)
+- [Variables]
+- [Loops]
+- [Handlers]
+- [Testing]
+- [Validation]
 
 ## Install
 
@@ -76,7 +81,18 @@ Ansible ships with the ansible-doc command-line tool
    ```sh
    $ ansible-doc <module-name>
    ```
+Generating TLS Certificate
+   ```sh
+   $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+     -subj /CN=target1 \
+     -keyout files/nginx.key -out files/nginx.crt
+   ```
+
 ## Usage
+* **Playbook**
+
+![Playbook](https://github.com/sjstanev/ansible_book/blob/febe60b9572588f6c722c942775efe9044fe6dfd/images/playbook.png?raw=true)
+
   * **Plays**
 
 Looking at the YAML, it should be clear that a playbook is a list of dictionaries. 
@@ -90,4 +106,4 @@ Modules are scripts that come packaged with Ansible and perform some kind of act
 Ansible executes a task on a host by generating a custom script based on the module name and arguments, 
 and then copies this script to the host and runs it.
 
-![Playbook](https://github.com/sjstanev/ansible_book/blob/febe60b9572588f6c722c942775efe9044fe6dfd/images/playbook.png?raw=true)
+* **Variables**
