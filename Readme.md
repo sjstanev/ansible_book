@@ -6,6 +6,7 @@
 
 - [Install](#install)
 - [Usage](#usage)
+- [Inventory](#inventory)
 
 ## Install
 
@@ -173,3 +174,24 @@ Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find pot
          $ ansible-inventory --host testserver -i inventory/vagrant.ini
          $ vagrant validate
    ```
+## Inventory
+
+The Ansible inventory is a very flexible object: it can be a file (in several formats), a directory, or an executable, and some executables are bundled as plug-ins.
+   ```
+   [defaults]
+   inventory = inventory
+
+   [inventory]
+   enable_plugins = host_list, script, auto, yaml, ini, toml
+   ```
+* **Behavioral Inventory Parameters**
+
+| Name | Default | Description |
+| ansible_host | Name of host | Hostname or IP address to SSH to |
+| ansible_port | 22 | Port to SSH to |
+| ansible_user | $USER | User to SSH as |
+| ansible_password | (None) |	Password to use for SSH authentication |
+| ansible_connection |smart | How Ansible will connect to host (see the following section) |
+| ansible_shell_type | sh | Shell to use for commands (see the following section) |
+| ansible_python_interpreter | /usr/bin/python | Python interpreter on host (see the following section) |
+| ansible_ssh_private_key_file | (None) | SSH private key to use for SSH authentication |
