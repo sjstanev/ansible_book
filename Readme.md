@@ -1,51 +1,52 @@
-# Change python command to start python3
+### Change python command to start python3
    sudo apt install python-is-python3
 
-# Add python3-vent module
+### Add python3-vent module
    sudo apt install python3-venv
 
-# Create virtual env and set prompt to "Ansible"
+### Create virtual env and set prompt to "Ansible"
    python -m venv .venv --prompt "Ansible"
 
-# Activate venv
+### Activate venv
    source .venv/bin/activate
 
-# Enter 'deactivate' to leave virtula environment
+### Enter 'deactivate' to leave virtula environment
 
-# Upgrade your pip by running:
+### Upgrade your pip by running:
    python -m pip install --upgrade pip
 
-# Can test module ping 
+### Can test module ping 
    ansible nginx -i inventory/inventory.ini -m ping
 
-# If you create ansible.cfg file for example:
-# [defaults]
-# inventory = inventory/inventory.ini
-# stdout_callback = yaml
-# callback_enable = timer
-   nsible nginx -m ping
+### If you create ansible.cfg file for example:
+   # [defaults]
+   # inventory = inventory/inventory.ini
+   # stdout_callback = yaml
+   # callback_enable = timer
 
-# You can execute arbitrary commands with the 'command' module
-# If you want tou pass an argument to module with the '-a' flag
+   ansible nginx -m ping
+
+### You can execute arbitrary commands with the 'command' module
+### If you want tou pass an argument to module with the '-a' flag
    ansible nginx -m command -a uptime
 
- # If you need privileged access, pass in the -b or --become flag
+### If you need privileged access, pass in the -b or --become flag
 
     # -k, --ask-pass: ask for connection password
     # -K, --ask-become-pass: ask for privilege escalation password
 
    ansible nginx -b -K -a "tail /var/log/dmesg" 
 
- # You can install Midnight Commander on Ubuntu by using the following command:
+### You can install Midnight Commander on Ubuntu by using the following command:
    ansible nginx -b -K -m package -a name=mc
 
-# Use Dockerfile and docker-compose.yml file to create virtual environment
+### Use Dockerfile and docker-compose.yml file to create virtual environment
    docker-compose up -d
 
-# you can use yamllint to find typos in YAML that you won’t find when you use the string format.
+### you can use yamllint to find typos in YAML that you won’t find when you use the string format.
    yamllint <playbook.yml>
 
-# Ansible ships with the ansible-doc command-line tool
+### Ansible ships with the ansible-doc command-line tool
    ansible-doc <module-name>
 
 
