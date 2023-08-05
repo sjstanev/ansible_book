@@ -6,11 +6,11 @@
 
 - [Install](#install)
 - [Usage](#usage)
-- [Variables]
-- [Loops]
-- [Handlers]
-- [Testing]
-- [Validation]
+- [Variables](#Variables)
+- [Loops](#Loops)
+- [Handlers](#Handlers)
+- [Testing](#Testing)
+- [Validation](#Validation)
 
 ## Install
 
@@ -107,3 +107,29 @@ Ansible executes a task on a host by generating a custom script based on the mod
 and then copies this script to the host and runs it.
 
 * **Variables**
+Variables can be used in tasks, as well as in template files. You reference variables by using {{ variable }}
+
+* **Loop**
+When you want to run a task with each item from a list, you can use loop. A loop executes the task multiple times, each time replacing `item` with different values from the specified list:
+   ```
+    - name: Copy Certificates files
+      copy:
+         src: "{{ item }}"
+         dest: "{{ tls_dir }}"
+         mode: '0600'
+      loop:
+         - "{{ key_file }}"
+         - "{{ cert_file }}"
+      notify: Restart nginx
+   ```
+
+* **Handlers**
+Handlers are one of the conditional forms that Ansible supports. A handler is similar to a task, but it runs only if it has been notified by a task. 
+A task will fire the notification if Ansible recognizes that the task has changed the state of the system.
+   ```
+      handlers:
+      - name: Restart nginx
+         service:
+            name: nginx
+            state: restarted
+   ```
