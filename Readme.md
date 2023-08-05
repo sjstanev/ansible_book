@@ -6,11 +6,6 @@
 
 - [Install](#install)
 - [Usage](#usage)
-- [Variables](#Variables)
-- [Loops](#Loops)
-- [Handlers](#Handlers)
-- [Testing](#Testing)
-- [Validation](#Validation)
 
 ## Install
 
@@ -89,6 +84,16 @@ Generating TLS Certificate
    ```
 
 ## Usage
+
+- [Playbook](#Playbook)
+- [Play](#Play)
+- [Modules](#Module)
+- [Variables](#Variables)
+- [Loops](#Loops)
+- [Handlers](#Handlers)
+- [Testing](#Testing)
+- [Validation](#Validation)
+
 * **Playbook**
 
 ![Playbook](https://github.com/sjstanev/ansible_book/blob/febe60b9572588f6c722c942775efe9044fe6dfd/images/playbook.png?raw=true)
@@ -135,4 +140,34 @@ A task will fire the notification if Ansible recognizes that the task has change
          service:
             name: nginx
             state: restarted
+   ```
+Handlers usually run at the end of the play after all of the tasks have been run. To force a notified handler in the middle of a play, we use these two lines of code:
+   ```
+      - name: Restart nginx
+        meta: flush_handlers
+   ```
+If a play contains multiple handlers, the handlers always run in the order that they are defined in the handlers section, not the notification order. 
+They run only once, even if they are notified multiple times.
+
+* **Testing**
+   ```
+   - name: "Make test! https://localhost:8443/index.html"
+      delegate_to: localhost
+      become: false
+      uri:
+      url: 'https://localhost:8443/index.html'
+      validate_certs: false
+      return_content: true
+      register: this
+      failed_when: "'Running on ' not in this.content"
+   ```
+
+* **Validation**
+Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find potential problems in playbooks.
+   ```
+      $ ansible-playbook --syntax-check webservers-tls.yml
+      $ ansible-lint webservers-tls.yml
+      $ yamllint webservers-tls.yml
+      $ ansible-inventory --host testserver -i inventory/vagrant.ini
+      $ vagrant validate
    ```
