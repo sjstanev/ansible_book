@@ -99,20 +99,20 @@ Generating TLS Certificate
 * **Playbook**
 
 ![Playbook](https://github.com/sjstanev/ansible_book/blob/febe60b9572588f6c722c942775efe9044fe6dfd/images/playbook.png?raw=true)
-
+<a name="Plays"></a>
   * **Plays**
 
 Looking at the YAML, it should be clear that a playbook is a list of dictionaries. 
 Specifically, a playbook is a list of plays. 
 Think of a play as the thing that connects to a group of hosts and a list of things to do on those hosts for you. 
 
-
+<a name="Modules"></a>
 * **Modules**
 
 Modules are scripts that come packaged with Ansible and perform some kind of action on a host. 
 Ansible executes a task on a host by generating a custom script based on the module name and arguments, 
 and then copies this script to the host and runs it.
-
+<a name="loops"></a>
 * **Variables**
 
 Variables can be used in tasks, as well as in template files. You reference variables by using *{{ variable }}*
@@ -132,7 +132,7 @@ When you want to run a task with each item from a list, you can use loop. A loop
          - "{{ cert_file }}"
       notify: Restart nginx
    ```
-
+<a name="Handlers"></a>
 * **Handlers**
 
 Handlers are one of the conditional forms that Ansible supports. A handler is similar to a task, but it runs only if it has been notified by a task. 
@@ -151,7 +151,7 @@ Handlers usually run at the end of the play after all of the tasks have been run
    ```
 If a play contains multiple handlers, the handlers always run in the order that they are defined in the handlers section, not the notification order. 
 They run only once, even if they are notified multiple times.
-
+<a name="Testing"></a>
 * **Testing**
 
    ```
@@ -165,7 +165,7 @@ They run only once, even if they are notified multiple times.
          register: this
          failed_when: "'Running on ' not in this.content"
    ```
-
+<a name="Validation"></a>
 * **Validation**
 
 Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find potential problems in playbooks.
