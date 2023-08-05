@@ -112,7 +112,7 @@ Think of a play as the thing that connects to a group of hosts and a list of thi
 Modules are scripts that come packaged with Ansible and perform some kind of action on a host. 
 Ansible executes a task on a host by generating a custom script based on the module name and arguments, 
 and then copies this script to the host and runs it.
-<a name="loops"></a>
+<a name="Variables"></a>
 * **Variables**
 
 Variables can be used in tasks, as well as in template files. You reference variables by using *{{ variable }}*
