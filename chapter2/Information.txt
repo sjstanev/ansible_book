@@ -34,4 +34,7 @@ ansible nginx -m ping
     # -k, --ask-pass: ask for connection password
     # -K, --ask-become-pass: ask for privilege escalation password
 
- ansible nginx -b -k -a "tail /var/log/dmesg" 
+ ansible nginx -b -K -a "tail /var/log/dmesg" 
+
+ # You can install Midnight Commander on Ubuntu by using the following command:
+ ansible nginx -b -K -m package -a name=mc
