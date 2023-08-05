@@ -84,7 +84,7 @@ Generating TLS Certificate
      -keyout files/nginx.key -out files/nginx.crt
    ```
 
-## Basic Usage
+`## Basic Usage`
 
 - [Playbook](#Playbook)
 - [Play](#Play)
