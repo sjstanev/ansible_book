@@ -195,7 +195,7 @@ The Ansible inventory is a very flexible object: it can be a file (in several fo
 | ansible_port | 22 | Port to SSH to |
 | ansible_user | $USER | User to SSH as |
 | ansible_password | (None) |	Password to use for SSH authentication |
-| ansible_connection |smart | How Ansible will connect to host (see the following section) |
-| ansible_shell_type | sh | Shell to use for commands (see the following section) |
-| ansible_python_interpreter | /usr/bin/python | Python interpreter on host (see the following section) |
+| ansible_connection |smart | How Ansible will connect to host |
+| ansible_shell_type | sh | Shell to use for commands |
+| ansible_python_interpreter | /usr/bin/python | Python interpreter on host |
 | ansible_ssh_private_key_file | (None) | SSH private key to use for SSH authentication |
