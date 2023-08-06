@@ -289,4 +289,27 @@ Variables can be concatenated between the double braces by using the tilde opera
   debug:
     msg: "The email address is: {{ username ~'@'~ domain_name }}/"
 ```
+## Registering Variables
+If you have to set the value of a variable based on the result of a task (Ansible module returns results in JSON format) and 
+to use these results leter, you create a *registered variable* using the `register` clause when invoking a module.
+```
+- name: Capture output of hostname
+  command: hostname
+  register: device_hostname
+```
+   *to find out what a module returns is to register a variable and then output that variable with the `debug` module*
+```
+---
+- name: Show return value of command module
+  hosts: target1
+  gather_facts: false
+  tasks:
+    - name: Capture output of whoami command
+      command: whoami
+      register: login
+
+    - debug: var=login
+    - debug: msg="Logged in as user {{ login.stdout }}"
+...
+```
 
