@@ -357,6 +357,7 @@ Viewing a Subset of Facts
 ansible target1 -b -k -m setup -a 'filter=ansible_uptime_seconds'
 ```
 * **Local Facts**
+
 Ansible provides an additional mechanism for associating facts with a host. You can place one or more files on the remote host machine in the /etc/ansible/facts.d directory. Ansible will recognize the file if it is:
 
     - In .ini format
@@ -370,6 +371,7 @@ authors=Me
 publisher=Me
 ```
 * **Using set_fact to Define a New Variable**
+
 Ansible also allows you to set a fact (effectively the same as defining a new variable) in a task by using the `set_fact` module.
 ```
 - name: Set nginx_state
