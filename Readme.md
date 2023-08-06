@@ -379,4 +379,16 @@ Ansible also allows you to set a fact (effectively the same as defining a new va
   set_fact:
     nginx_state: "{{ ansible_facts.services.nginx.state }}"
 ```
+## Built-In Variables
+| Parameter | Description |
+| --------- | ----------- |
+| hostvars | A dict whose keys are Ansible hostnames and values are dicts that map variable names to values |
+| inventory_hostname | The name of the current host as known in the Ansible inventory, might include domain name |
+| inventory_hostname_short | Name of the current host as known by Ansible, without the domain name (e.g., myhost) |
+| group_names | A list of all groups that the current host is a member of |
+| groups | A dict whose keys are Ansible group names and values are a list of hostnames that are members of the group. Includes all and ungrouped groups: {“all”: [...], “web”: [...], “ungrouped”: [...]} |
+| ansible_check_mode | A boolean that is true when running in check mode (see “Check Mode”) |
+| ansible_play_batch | A list of the inventory hostnames that are active in the current batch (see “Running on a Batch of Hosts at a Time”) |
+| ansible_play_hosts | A list of all of the inventory hostnames that are active in the current play |
+| ansible_version | A dict with Ansible version info: {“full”: 2.3.1.0”, “major”: 2, “minor”: 3, “revision”: 1, “string”: “2.3.1.0”} |
 
