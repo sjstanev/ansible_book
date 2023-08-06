@@ -392,3 +392,8 @@ Ansible also allows you to set a fact (effectively the same as defining a new va
 | ansible_play_hosts | A list of all of the inventory hostnames that are active in the current play |
 | ansible_version | A dict with Ansible version info: {“full”: 2.3.1.0”, “major”: 2, “minor”: 3, “revision”: 1, “string”: “2.3.1.0”} |
 
+hostvars
+```
+{{ hostvars['db.example.com'].ansible_eth1.ipv4.address }}
+```
+
