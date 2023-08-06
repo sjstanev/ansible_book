@@ -396,7 +396,7 @@ hostvars
 ```
 {{ hostvars['db.example.com'].ansible_eth1.ipv4.address }}
 ```
-*hostvars Versus host_vars*
+* *hostvars Versus host_vars*
 
 `hostvars` is computed when you run Ansible, while `host_vars` is a directory that you can use to define variables for a particular system.
 
@@ -405,4 +405,20 @@ inventory_hostname
 ubuntu ansible_host=192.168.4.10
 ```
    * *then inventory_hostname would be ubuntu.*
+     
+Output all of the variables associated with the current host with the help of the `hostvars` and `inventory_hostname` variables:
 
+```
+- debug: var=hostvars[inventory_hostname]
+```
+
+## Extra Variables on the Command Line
+
+Variables set by passing `-e var=value` to `ansible-playbook` have the highest precedence, which means you can use this to override variables that are already defined. 
+Specify `-e` multiple times to pass as many variable values as you need.
+
+Ansible also allows you to pass a file containing the variables instead of passing them directly on the command line by passing `@filename.yml` as the argument to `-e`:
+
+```
+ansible-playbook target1.yml -e @filename.yml
+```
