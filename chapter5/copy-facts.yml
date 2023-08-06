@@ -1,6 +1,6 @@
 ---
 - name: Copy loca_facts to remote host
-  hosts: target2
+  hosts: all
   become: true
   tasks:
     - name: Create directories for local_facts.fact

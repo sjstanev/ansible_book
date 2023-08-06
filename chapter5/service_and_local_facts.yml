@@ -1,6 +1,6 @@
 ---
 - name: Show a fact returned by a module
-  hosts: target1
+  hosts: all
   gather_facts: True
   tasks:
     - name: Get services facts
