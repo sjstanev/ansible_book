@@ -182,6 +182,7 @@ Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find pot
 - [Behavioral Inventory Parameters](#behavioral-inventory-parameters)
 - [Groups of Groups](#groups-of-groups)
 - [Host and Group Variables](#host-and-group-variables)
+- [Dynamic Inventory](#dynamic-inventory)
 - [The Interface for a Dynamic Inventory Script](#the-interface-for-a-dynamic-inventory-script)
 - [Add_Host and Group at Runtime](#add_host-and-group_by)
 
@@ -233,9 +234,13 @@ Contrast that to how we would otherwise access them:
 ```
 "{{ db_primary_host }}"
 ```
+# Dynamic Inventory
+If the inventory file is marked executable, Ansible will assume it is a dynamic inventory script and will execute the file instead of reading it.
+```
+$ chmod +x vagrant.py
+```
 
 # The Interface for a Dynamic Inventory Script
-
 ```
 $ ansible-inventory -i inventory/hosts --host=target1
 ```
@@ -255,4 +260,12 @@ Ansible will let you add hosts and groups to the inventory during the execution 
 The `add_host` module adds a host to the inventory,
 This is useful if you’re using Ansible to provision new virtual machine instances inside an IaaS cloud.
 If a new host comes online while a playbook is executing, the dynamic inventory script will not pick up this new host.
-This is because the dynamic inventory script is executed at the beginning of the playbook
+This is because the dynamic inventory script is executed at the beginning of the playbook.
+if any new hosts are added while the playbook is executing, Ansible won’t see them.
+```
+- name: Add the new host
+  add_host
+    name: target1
+    groups: web,db
+    myvar: new_value
+```
