@@ -420,7 +420,7 @@ Ansible also allows you to pass a file containing the variables instead of passi
 ```
 ansible-playbook target1.yml -e @filename.yml
 ```
-## Variable Precedence
+## Variables Precedence
    1. command line values (for example, -u my_user; these are not variables)
    2. role defaults (defined in role/defaults/main.yml)
    3. inventory file or script group vars
