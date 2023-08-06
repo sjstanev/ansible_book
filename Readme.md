@@ -7,7 +7,7 @@
 - [Install](#install)
 - [Basic Usage](#basic-usage)
 - [Inventory](#inventory)
-
+- [Variables and Facts](#variables-and-facts)
 ---
 ## Install
 
@@ -269,3 +269,8 @@ if any new hosts are added while the playbook is executing, Ansible won’t see 
     groups: web,db
     myvar: new_value
 ```
+# Variables and Facts
+Ansible’s support for variables in strings or in other variables, including a certain type of variable that Ansible calls a `fact`.
+* **Defining Variables in Playbooks**
+* **Defining Variables in Separate Files**
+* **Directory Layout**
