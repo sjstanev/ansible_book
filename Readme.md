@@ -271,9 +271,9 @@ if any new hosts are added while the playbook is executing, Ansible won’t see 
 ```
 # Variables and Facts
 Ansible’s support for variables in strings or in other variables, including a certain type of variable that Ansible calls a `fact`.
-- Defining Variables in Playbooks**
-- Defining Variables in Separate Files**  - `vars_files`
-- Directory Layout** - `host_vars` and `group_vars`
+- Defining Variables in Playbooks
+- Defining Variables in Separate Files  - `vars_files`
+- Directory Layout - `host_vars` and `group_vars`
 
 ## Viewing the Values of Variables
 Variable Interpolation
@@ -312,4 +312,34 @@ to use these results leter, you create a *registered variable* using the `regist
     - debug: msg="Logged in as user {{ login.stdout }}"
 ...
 ```
+### Ignoring when a module returns an error
+```
+- name: Run myprog
+  command: /opt/myprog
+  register: result
+  ignore_errors: true
 
+- debug: var=result
+```
+Accessing Dictionary Keys in a Variable
+
+### If a variable contains a dictionary, you can access the keys of the dictionary by using either a `dot (.)` or a `subscript ([])`.
+```
+{{ result.stat }}
+```
+or
+```
+{{ result['stat'] }}
+```
+This rule applies to multiple dereferences, so all of the following are equivalent:
+```
+   result['stat']['mode']
+   result['stat'].mode
+   result.stat['mode']
+   result.stat.mode
+```
+A big advantage of subscript notation is that you can use variables in the brackets (these are not quoted):
+```
+- name: Display result.stat detail
+  debug: var=result['stat'][stat_key]
+```
