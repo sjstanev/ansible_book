@@ -1,0 +1,16 @@
+---
+- name: Show a fact returned by a module
+  hosts: target1
+  gather_facts: True
+  tasks:
+    - name: Get services facts
+      service_facts:
+
+    - debug: var=ansible_facts['services']
+
+    - name: Print ansible_local
+      debug: var=ansible_local
+
+    - name: Print book title
+      debug: msg="The title is {{ ansible_local.local_facts.git.title }}"
+...

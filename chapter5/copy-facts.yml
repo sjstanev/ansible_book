@@ -1,0 +1,15 @@
+---
+- name: Copy loca_facts to remote host
+  hosts: target2
+  become: true
+  tasks:
+    - name: Create directories for local_facts.fact
+      ansible.builtin.file:
+        path: /etc/ansible/facts.d/
+        state: directory
+        mode: '0777'
+
+    - name: Copy loca_facts
+      copy:
+        src: local_facts.fact
+        dest: /etc/ansible/facts.d/local_facts.fact
