@@ -359,9 +359,9 @@ ansible target1 -b -k -m setup -a 'filter=ansible_uptime_seconds'
 * **Local Facts**
 Ansible provides an additional mechanism for associating facts with a host. You can place one or more files on the remote host machine in the /etc/ansible/facts.d directory. Ansible will recognize the file if it is:
 
- - In .ini format
- - In JSON format
- - An executable that takes no arguments and outputs JSON on the standard output stream
+    - In .ini format
+    - In JSON format
+    - An executable that takes no arguments and outputs JSON on the standard output stream
 
 ```
 [git]
