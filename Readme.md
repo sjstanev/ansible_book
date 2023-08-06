@@ -182,6 +182,7 @@ Use `yamllint` and|or `ansible-lint` that is a Python tool to helps you find pot
 - [Behavioral Inventory Parameters](#behavioral-inventory-parameters)
 - [Groups of Groups](#groups-of-groups)
 - [Host and Group Variables](#host-and-group-variables)
+- [Dynamic Inventory](#dynamic-inventory)
 - [The Interface for a Dynamic Inventory Script](#the-interface-for-a-dynamic-inventory-script)
 - [Add_Host and Group at Runtime](#add_host-and-group_by)
 
@@ -235,11 +236,9 @@ Contrast that to how we would otherwise access them:
 ```
 # Dynamic Inventory
 If the inventory file is marked executable, Ansible will assume it is a dynamic inventory script and will execute the file instead of reading it.
-
-# The Interface for a Dynamic Inventory Script
-
 ```$ chmod +x vagrant.py```
 
+# The Interface for a Dynamic Inventory Script
 ```
 $ ansible-inventory -i inventory/hosts --host=target1
 ```
