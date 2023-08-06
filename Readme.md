@@ -392,13 +392,11 @@ Ansible also allows you to set a fact (effectively the same as defining a new va
 | ansible_play_hosts | A list of all of the inventory hostnames that are active in the current play |
 | ansible_version | A dict with Ansible version info: {“full”: 2.3.1.0”, “major”: 2, “minor”: 3, “revision”: 1, “string”: “2.3.1.0”} |
 
-hostvars
+## hostvars
 ```
 {{ hostvars['db.example.com'].ansible_eth1.ipv4.address }}
 ```
-
-## Hostvars Versus host_vars
-`hostvars` is computed when you run Ansible, while `host_vars` is a directory that you can use to define variables for a particular system.
+*`Hostvars` versus `host_vars`* - `hostvars` is computed when you run Ansible, while `host_vars` is a directory that you can use to define variables for a particular system.
 
 ## Inventory_hostname
 ```
@@ -406,7 +404,7 @@ ubuntu ansible_host=192.168.4.10
 ```
    * *then inventory_hostname would be ubuntu.*
      
-Output all of the variables associated with the current host with the help of the `hostvars` and `inventory_hostname` variables:
+To output all of the variables associated with the current host with the help of the `hostvars` and `inventory_hostname` variables:
 
 ```
 - debug: var=hostvars[inventory_hostname]
