@@ -233,8 +233,12 @@ Contrast that to how we would otherwise access them:
 ```
 "{{ db_primary_host }}"
 ```
+# Dynamic Inventory
+If the inventory file is marked executable, Ansible will assume it is a dynamic inventory script and will execute the file instead of reading it.
 
 # The Interface for a Dynamic Inventory Script
+
+```$ chmod +x vagrant.py```
 
 ```
 $ ansible-inventory -i inventory/hosts --host=target1
