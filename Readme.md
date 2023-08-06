@@ -269,7 +269,11 @@ if any new hosts are added while the playbook is executing, Ansible won’t see 
     groups: web,db
     myvar: new_value
 ```
+---
 # Variables and Facts
+- [Variables](#variables)
+- [Facts](#facts)
+## Variables
 Ansible’s support for variables in strings or in other variables, including a certain type of variable that Ansible calls a `fact`.
 - Defining Variables in Playbooks
 - Defining Variables in Separate Files  - `vars_files`
@@ -321,9 +325,8 @@ to use these results leter, you create a *registered variable* using the `regist
 
 - debug: var=result
 ```
-Accessing Dictionary Keys in a Variable
-
-### If a variable contains a dictionary, you can access the keys of the dictionary by using either a `dot (.)` or a `subscript ([])`.
+## Accessing Dictionary Keys in a Variable
+If a variable contains a dictionary, you can access the keys of the dictionary by using either a `dot (.)` or a `subscript ([])`.
 ```
 {{ result.stat }}
 ```
@@ -343,3 +346,4 @@ A big advantage of subscript notation is that you can use variables in the brack
 - name: Display result.stat detail
   debug: var=result['stat'][stat_key]
 ```
+## Facts
