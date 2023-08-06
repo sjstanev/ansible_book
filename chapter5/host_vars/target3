@@ -1,0 +1,4 @@
+ansible_host: 192.168.80.251 
+ansible_port: 2203
+current_directory: pwd
+date_and_time: date

@@ -1,0 +1,7 @@
+[all:vars]
+ansible_user=root
+
+[target]
+target1
+target2
+target3
