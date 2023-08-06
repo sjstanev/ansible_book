@@ -352,3 +352,7 @@ Ansible implements fact collecting through the use of a special module called th
 ```
 $ ansible ubuntu -m setup
 ```
+Viewing a Subset of Facts
+```
+ansible target1 -b -k -m setup -a 'filter=ansible_uptime_seconds'
+```
