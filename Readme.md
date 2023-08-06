@@ -347,3 +347,8 @@ A big advantage of subscript notation is that you can use variables in the brack
   debug: var=result['stat'][stat_key]
 ```
 ## Facts
+ - Viewing All Facts Associated with a Server
+Ansible implements fact collecting through the use of a special module called the `setup` module.
+```
+$ ansible ubuntu -m setup
+```
