@@ -7,7 +7,7 @@
 - [Install](#install)
 - [Basic Usage](#basic-usage)
 - [Inventory](#inventory)
-
+- [Variables and Facts](#variables-and-facts)
 ---
 ## Install
 
@@ -268,4 +268,87 @@ if any new hosts are added while the playbook is executing, Ansible won’t see 
     name: target1
     groups: web,db
     myvar: new_value
+```
+---
+# Variables and Facts
+- [Variables](#variables)
+- [Facts](#facts)
+## Variables
+Ansible’s support for variables in strings or in other variables, including a certain type of variable that Ansible calls a `fact`.
+- Defining Variables in Playbooks
+- Defining Variables in Separate Files  - `vars_files`
+- Directory Layout - `host_vars` and `group_vars`
+
+## Viewing the Values of Variables
+Variable Interpolation
+```
+- name: Display the variable
+  debug:
+    msg: "The file used was {{ conf_file }}"
+```
+
+Variables can be concatenated between the double braces by using the tilde operator ~, as shown here:
+```
+- name: Concatenate variables
+  debug:
+    msg: "The email address is: {{ username ~'@'~ domain_name }}/"
+```
+## Registering Variables
+If you have to set the value of a variable based on the result of a task (Ansible module returns results in JSON format) and 
+to use these results leter, you create a *registered variable* using the `register` clause when invoking a module.
+```
+- name: Capture output of hostname
+  command: hostname
+  register: device_hostname
+```
+   *to find out what a module returns is to register a variable and then output that variable with the `debug` module*
+```
+---
+- name: Show return value of command module
+  hosts: target1
+  gather_facts: false
+  tasks:
+    - name: Capture output of whoami command
+      command: whoami
+      register: login
+
+    - debug: var=login
+    - debug: msg="Logged in as user {{ login.stdout }}"
+...
+```
+### Ignoring when a module returns an error
+```
+- name: Run myprog
+  command: /opt/myprog
+  register: result
+  ignore_errors: true
+
+- debug: var=result
+```
+## Accessing Dictionary Keys in a Variable
+If a variable contains a dictionary, you can access the keys of the dictionary by using either a `dot (.)` or a `subscript ([])`.
+```
+{{ result.stat }}
+```
+or
+```
+{{ result['stat'] }}
+```
+This rule applies to multiple dereferences, so all of the following are equivalent:
+```
+   result['stat']['mode']
+   result['stat'].mode
+   result.stat['mode']
+   result.stat.mode
+```
+A big advantage of subscript notation is that you can use variables in the brackets (these are not quoted):
+```
+- name: Display result.stat detail
+  debug: var=result['stat'][stat_key]
+```
+## Facts
+ - Viewing All Facts Associated with a Server
+Ansible implements fact collecting through the use of a special module called the `setup` module.
+```
+$ ansible ubuntu -m setup
 ```
