@@ -274,3 +274,19 @@ Ansible’s support for variables in strings or in other variables, including a 
 * **Defining Variables in Playbooks**
 * **Defining Variables in Separate Files**  - `vars_files`
 * **Directory Layout** - `host_vars` and `group_vars`
+
+## Viewing the Values of Variables
+Variable Interpolation
+```
+- name: Display the variable
+  debug:
+    msg: "The file used was {{ conf_file }}"
+```
+
+Variables can be concatenated between the double braces by using the tilde operator ~, as shown here:
+```
+- name: Concatenate variables
+  debug:
+    msg: "The email address is: {{ username ~'@'~ domain_name }}/"
+```
+
