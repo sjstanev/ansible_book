@@ -260,4 +260,5 @@ Ansible will let you add hosts and groups to the inventory during the execution 
 The `add_host` module adds a host to the inventory,
 This is useful if you’re using Ansible to provision new virtual machine instances inside an IaaS cloud.
 If a new host comes online while a playbook is executing, the dynamic inventory script will not pick up this new host.
-This is because the dynamic inventory script is executed at the beginning of the playbook
+This is because the dynamic inventory script is executed at the beginning of the playbook.
+if any new hosts are added while the playbook is executing, Ansible won’t see them.
