@@ -404,5 +404,5 @@ inventory_hostname
 ```
 ubuntu ansible_host=192.168.4.10
 ```
-   *then inventory_hostname would be ubuntu.
+   * *then inventory_hostname would be ubuntu.*
 
