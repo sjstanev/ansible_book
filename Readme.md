@@ -272,5 +272,5 @@ if any new hosts are added while the playbook is executing, Ansible won’t see 
 # Variables and Facts
 Ansible’s support for variables in strings or in other variables, including a certain type of variable that Ansible calls a `fact`.
 * **Defining Variables in Playbooks**
-* **Defining Variables in Separate Files**
-* **Directory Layout**
+* **Defining Variables in Separate Files**  - `vars_files`
+* **Directory Layout** - `host_vars` and `group_vars`
