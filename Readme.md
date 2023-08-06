@@ -396,11 +396,11 @@ hostvars
 ```
 {{ hostvars['db.example.com'].ansible_eth1.ipv4.address }}
 ```
-* *hostvars Versus host_vars*
 
+## Hostvars Versus host_vars
 `hostvars` is computed when you run Ansible, while `host_vars` is a directory that you can use to define variables for a particular system.
 
-inventory_hostname
+## Inventory_hostname
 ```
 ubuntu ansible_host=192.168.4.10
 ```
