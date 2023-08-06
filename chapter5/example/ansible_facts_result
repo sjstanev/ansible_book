@@ -1,0 +1,19 @@
+PLAY [Ansible facts.] **********************************************************
+TASK [Gathering Facts] *********************************************************
+ok: [debian]
+ok: [fedora]
+ok: [ubuntu]
+TASK [Print out operating system details] **************************************
+ok: [ubuntu] ==> {
+    "msg": "os_family: Debian, distro: Ubuntu 20.04, kernel: 5.4.0-73-generic"
+}
+ok: [fedora] ==> {
+    "msg": "os_family: RedHat, distro: Fedora 34, kernel: 5.11.12-300.fc34.x86_64"
+}
+ok: [debian] ==> {
+    "msg": "os_family: Debian, distro: Debian 10, kernel: 4.19.0-16-amd64"
+}
+PLAY RECAP *********************************************************************
+debian : ok=2  changed=0  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0
+fedora : ok=2  changed=0  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0
+ubuntu : ok=2  changed=0  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0
